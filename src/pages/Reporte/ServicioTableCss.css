@@ -1,0 +1,23 @@
+.logo-login {
+  width: 100px;
+}
+
+.tableStick {
+  position: sticky;
+  z-index: 999;
+  background-color: rgb(223, 223, 223) !important;
+  top: 0;
+}
+
+.stickResidente {
+  position: sticky;
+  background-color: rgb(223, 223, 223) !important;
+  left: 0;
+  z-index: 99;
+}
+
+.stickEspecialidad {
+  position: sticky;
+  left: 131px;
+  background-color: rgb(223, 223, 223) !important;
+}

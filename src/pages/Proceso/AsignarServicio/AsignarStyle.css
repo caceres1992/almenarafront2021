@@ -1,0 +1,45 @@
+.stickyResidente {
+  position: sticky;
+  left: 0;
+  background-color: rgb(233, 233, 233) !important;
+  z-index: 10 !important;
+}
+
+.StyckyHeader tr,
+.StyckyHeader td {
+  border-right: 1px solid black !important;
+}
+
+
+
+.StyckyHeader tr {
+  z-index: 9;
+  background-color: rgb(230, 230, 230);
+  position: sticky;
+  top: 0;
+  z-index: 15 !important;
+}
+
+.StyckyHeader tr th:first-child{
+  position: sticky;
+  left: 0;
+  z-index: 99 !important; 
+  background-color: rgb(230, 230, 230);
+}
+.StyckyHeader tr th:nth-child(2){
+  position: sticky;
+  left: 131px;
+  z-index: 99 !important; 
+  background-color: rgb(230, 230, 230);
+}
+
+.stickyEspecialidad {
+  position: sticky;
+  left: 131px;
+  background-color: rgb(233, 233, 233) !important;
+  z-index: 10 !important;
+}
+.StyckyHeader tr th:first-child,
+tbody tr td:first-child {
+  width: 300px !important;
+}
