@@ -17,6 +17,7 @@ import {
   Modal,
   Upload,
   message,
+  Popconfirm,
 } from "antd";
 import {
   EditOutlined,
@@ -565,6 +566,9 @@ export const Medico2 = () => {
     }
   }, [consultarApi]);
 
+
+
+
   const props = {
     name: "file",
     action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -629,6 +633,12 @@ export const Medico2 = () => {
       });
     setVisibleUpdateForm(!visibleUpdateForm);
   };
+
+
+  function confirm() {
+    deleteDocturByDocument(formik.values.document)
+  
+  }
 
   return (
     <div className="mantenimiento">
@@ -1332,21 +1342,29 @@ export const Medico2 = () => {
                 </Col>
 
                 <Col span="12">
-                  
-                  <Button
+                  <Popconfirm
+                    placement="topRight"
+                    title={`desea eliminar a ${formik.values.name} ${formik.values.paternalSurname}?`}
+                    onConfirm={confirm}
+                    okText="Si"
+                    cancelText="No"
+                  >
+                    <Button
                     style={{
                       backgroundColor: "red",
                       color: "white",
                       border: "none",
                     }}
                     htmlType="button"
-                    onClick={() =>
-                      deleteDocturByDocument(formik.values.document.toString())
-                    }
+                    // onClick={() =>
+                    //   // deleteDocturByDocument(formik.values.document.toString())
+                    // }
                     block
                   >
                     Eliminar
                   </Button>
+                  </Popconfirm>
+                 
                 </Col>
               </Row>
             </Form.Item>
