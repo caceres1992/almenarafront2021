@@ -1356,9 +1356,6 @@ export const Medico2 = () => {
                       border: "none",
                     }}
                     htmlType="button"
-                    // onClick={() =>
-                    //   // deleteDocturByDocument(formik.values.document.toString())
-                    // }
                     block
                   >
                     Eliminar
