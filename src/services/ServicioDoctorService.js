@@ -102,6 +102,19 @@ const viewPdfServiciosDoctorByAnioAndServicio = async (idAnio, idServicio) => {
     });
 };
 
+const viewPdfServiciosDoctorByAnioAndServicio2 = async (idAnio, idServicio) => {
+  await clienteAxios
+    .get(
+      `/servicio-doctor/vr2/pdf/medicos-residentes-otras-especialidades-por-periodo/${idServicio}/${idAnio}`,
+      { responseType: "blob" }
+    )
+    .then((resp) => {
+      const file = new Blob([resp.data], { type: "application/pdf" });
+      const fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+    });
+};
+
 export {
   getServiciosDoctor,
   getServiciosDoctor2,
@@ -111,6 +124,7 @@ export {
   getServiciosDoctorByAnioAndServicio,
   getServiciosDoctorByAnioAndServicio2,
   viewPdfServiciosDoctorByAnioAndServicio,
+  viewPdfServiciosDoctorByAnioAndServicio2,
   viewPdfServiciosDoctor2,
   viewPdfServiciosDoctorFilterSpecialty2
 };

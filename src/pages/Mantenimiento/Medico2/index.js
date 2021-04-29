@@ -1332,6 +1332,7 @@ export const Medico2 = () => {
                 </Col>
 
                 <Col span="12">
+                  
                   <Button
                     style={{
                       backgroundColor: "red",

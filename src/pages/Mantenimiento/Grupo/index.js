@@ -42,6 +42,7 @@ export const Grupo = () => {
 
         Modal.info({
           title: "Asignar Grupo",
+          width:900,
           content: (
             <div>
             {grupoDoctores.map((data) => (              

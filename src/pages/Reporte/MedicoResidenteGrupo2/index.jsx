@@ -10,7 +10,7 @@ import { getServiciosWithSpecialityName } from "../../../services/ServicioServic
 import {
   getServiciosDoctor2,
   getServiciosDoctorByAnioAndServicio2,
-  viewPdfServiciosDoctorByAnioAndServicio,
+  viewPdfServiciosDoctorByAnioAndServicio2,
   viewPdfServiciosDoctorFilterSpecialty,
 } from "../../../services/ServicioDoctorService";
 
@@ -81,6 +81,14 @@ const MedicoResidenteGrupo2 = () => {
     setfilterServiceOn(true);
   };
 
+  const exportToPdf = () => {
+    if (filterAnioAcademicoOn && filterServiceOn) {
+      viewPdfServiciosDoctorByAnioAndServicio2(idAnioAcademico, idService);
+    } else {
+      alert("Seleccione los filtros primero");
+    }
+  };
+  console.log(serviciosDoctor)
   return (
     <div>
       <header>
@@ -97,7 +105,7 @@ const MedicoResidenteGrupo2 = () => {
           color="red"
           size="large"
           danger
-          //   onClick={exportToPdf}
+            onClick={exportToPdf}
         >
           <FilePdfTwoTone twoToneColor="red" /> Exportar a PDF
         </Button>
@@ -117,7 +125,7 @@ const MedicoResidenteGrupo2 = () => {
         <Empty style={{marginTop:50}}/>
       ) : (
         <TableGrupo2
-          setServiciosDoctor={setServiciosDoctor}
+         
           serviciosDoctor={serviciosDoctor}
           idService={idService}
         />

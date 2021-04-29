@@ -3,8 +3,6 @@ import React from "react";
 import { useEffect } from "react";
 import { getServiciosDoctor } from "../../../services/ServicioDoctorService";
 const TableGrupo2 = ({ serviciosDoctor, idService }) => {
-
-
   return (
     <div className="table-responsive" style={{ marginTop: 40 }}>
       <table
@@ -39,8 +37,8 @@ const TableGrupo2 = ({ serviciosDoctor, idService }) => {
               <React.Fragment key={data.id}>
                 <tr>
                   <td style={{ padding: "10px 30px", border: "none" }}>
-                    {`${data.doctor.name} ${data.doctor.lastname}`}-{" "}
-                    {data.doctor.schoolAgreement.school.shortName}
+                    {`${data.doctor.name} ${data.doctor.paternalSurname} ${data.doctor.maternalSurname}`}{" "}
+                    {""}- <strong>{data.doctor.schoolAgreement.school.shortName}</strong> 
                   </td>
                   <td>{data.doctor.specialty.name}</td>
                   {data.anioAcademicoDelegados.map((data2, key2) => (

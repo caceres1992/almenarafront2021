@@ -196,7 +196,9 @@ const AsignarServicio2 = () => {
           listarByIdSpecialty={listarByIdSpecialty}
         />
 
-        <div className="table-responsive">
+        <div className="table-responsive"
+                style={{ position: "relative", overflow: "auto", maxHeight: "75vh" }}
+        >
           <TablaServicio2
             serviciosDoctor={serviciosDoctor}
             editService={editService}

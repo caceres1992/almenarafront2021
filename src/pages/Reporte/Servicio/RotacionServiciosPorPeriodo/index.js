@@ -201,8 +201,8 @@ export const ReporteRotationDoctorServiciosPorPeriodo = () => {
                   <React.Fragment key={data.id}>
                     <tr>
                       <td style={{ width: "300px" }}>
-                        {data.doctor.name} -{" "}
-                        {data.doctor.schoolAgreement.school.shortName}
+                      {`${data.doctor.name} ${data.doctor.paternalSurname} ${data.doctor.maternalSurname}`} {''}
+                      {""}- <strong>{data.doctor.schoolAgreement.school.shortName}</strong> 
                       </td>
                       <td>{data.doctor.specialty.name}</td>
                       {data.anioAcademicoDelegados.map((data2, key2) => (

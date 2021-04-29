@@ -247,7 +247,7 @@ export const AsignarServicio = () => {
         </Form>
         <div
           className="table-responsive"
-          style={{ position: "relative", overflow: "scroll", height: "90vh" }}
+          style={{ position: "relative", overflow: "auto", maxHeight: "75vh" }}
         >
           <table
             className="table table-hover table-striped"
