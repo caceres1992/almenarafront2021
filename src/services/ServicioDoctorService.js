@@ -15,6 +15,12 @@ const getServiciosDoctorBySpecialtyId = async (id) => {
   return resp.data;
 };
 
+
+const getServiciosDoctorBySpecialtyId2 = async (id) => {
+  const resp = await clienteAxios.get(`/servicio-doctor/vr2/${id}`);
+  return resp.data;
+};
+
 const getServiciosDoctorByServiceId = async (id) => {
   const resp = await clienteAxios.get(`/servicio-doctor/${id}`);
   return resp.data;
@@ -119,6 +125,7 @@ export {
   getServiciosDoctor,
   getServiciosDoctor2,
   getServiciosDoctorBySpecialtyId,
+  getServiciosDoctorBySpecialtyId2,
   viewPdfServiciosDoctor,
   viewPdfServiciosDoctorFilterSpecialty,
   getServiciosDoctorByAnioAndServicio,

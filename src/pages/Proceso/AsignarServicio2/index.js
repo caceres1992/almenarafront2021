@@ -4,7 +4,7 @@ import Form from "antd/lib/form/Form";
 import React, { useState, useEffect } from "react";
 import {
   getServiciosDoctor2,
-  getServiciosDoctorBySpecialtyId,
+  getServiciosDoctorBySpecialtyId2,
   viewPdfServiciosDoctor,
   viewPdfServiciosDoctorFilterSpecialty,
 } from "../../../services/ServicioDoctorService";
@@ -147,7 +147,7 @@ const AsignarServicio2 = () => {
   };
 
   const listarByIdSpecialty = (id) => {
-    getServiciosDoctorBySpecialtyId(id).then(setServiciosDoctor);
+    getServiciosDoctorBySpecialtyId2(id).then(setServiciosDoctor);
   };
 
   const hanldeSelectSpecialty = (e) => {
@@ -187,7 +187,7 @@ const AsignarServicio2 = () => {
       </header>
 
       <div className="content">
-        <Formulario
+        <Formulario 
           setfilterSpecialtyOn={setfilterSpecialtyOn}
           setIdSpecialty={setIdSpecialty}
           specialties={specialties}
