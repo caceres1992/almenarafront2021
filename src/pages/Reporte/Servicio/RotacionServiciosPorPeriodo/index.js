@@ -11,7 +11,7 @@ import { getAniosAcademicos } from "../../../../services/AnioAcademicoService";
 import { getMeses } from "../../../../services/MesService";
 import { Form, Breadcrumb, Button, Select, Empty } from "antd";
 import { getSpecialties } from "../../../../services/SpecialtyService";
-
+import '../../ServicioTableCss.css'
 export const ReporteRotationDoctorServiciosPorPeriodo = () => {
   const [serviciosDoctor, setServiciosDoctor] = useState([]);
   const [servicios, setServicios] = useState([]);
@@ -176,7 +176,7 @@ export const ReporteRotationDoctorServiciosPorPeriodo = () => {
               border="1"
               style={{ textAlign: "center" }}
             >
-              <thead>
+              <thead className="tableStick">
                 <tr>
                   <th style={{ width: "300px" }}>Residente</th>
                   <th>Especialidad</th>

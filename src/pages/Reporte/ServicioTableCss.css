@@ -2,7 +2,7 @@
   width: 100px;
 }
 
-.tableStick {
+.tableStick  tr th{
   position: sticky;
   z-index: 999;
   background-color: rgb(223, 223, 223) !important;

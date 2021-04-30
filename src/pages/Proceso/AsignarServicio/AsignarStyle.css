@@ -12,7 +12,7 @@
 
 
 
-.StyckyHeader tr {
+.StyckyHeader tr th{
   z-index: 9;
   background-color: rgb(230, 230, 230);
   position: sticky;
@@ -23,6 +23,7 @@
 .StyckyHeader tr th:first-child{
   position: sticky;
   left: 0;
+  
   z-index: 99 !important; 
   background-color: rgb(230, 230, 230);
 }
