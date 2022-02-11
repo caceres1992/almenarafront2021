@@ -207,8 +207,9 @@ export const Servicio = () => {
           loading={!dataSource.length>0}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
-          pagination={{ pageSize: 5 }}
+          pagination={{ pageSize: 20 }}
           scroll={{ x: 800 }}
+
         />
         <Drawer
           title={

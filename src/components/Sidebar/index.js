@@ -131,6 +131,13 @@ export const Sidebar = () => {
             • Médico
           </NavLink>
         </li>
+
+        <li>
+          <NavLink to="/reporte/universidad" activeClassName="active">
+            • Universidad
+          </NavLink>
+        </li>
+
         <li>
           <NavLink to="/reporte/especialidad" activeClassName="active">
             • Especialidad

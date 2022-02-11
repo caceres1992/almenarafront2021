@@ -10,8 +10,10 @@ import { Especialidad } from "../pages/Mantenimiento/Especialidad";
 import { Medico } from "../pages/Mantenimiento/Medico";
 import { Servicio } from "../pages/Mantenimiento/Servicio";
 import { MedicoReporte } from "../pages/Reporte/Medico";
+import UniversidadReporte from "../pages/Reporte/Universidad/UniversidadReporte";
 import { EspecialidadReporte } from "../pages/Reporte/Especialidad";
 import { ServicioRerporte } from "../pages/Reporte/Servicio";
+
 import { Grupo } from "../pages/Mantenimiento/Grupo";
 import { GrupoMant } from "../pages/Mantenimiento/GrupoMant";
 import { AsignaGrupo } from "../pages/Proceso/AsignarGrupo";
@@ -46,6 +48,7 @@ export const DashboardRoutes = () => {
           <Route exact path="/reporte/especialidad" component={EspecialidadReporte} />
           <Route exact path="/reporte/servicio" component={ServicioRerporte} />
           <Route exact path="/reporte/servicio2" component={Servicio2} />
+          <Route exact path="/reporte/universidad" component={UniversidadReporte} />
           <Route exact path="/reporte/servicio/relacion-medicos-residentes-otras-especialidades-por-periodo" component={ReporteRotationDoctorServiciosPorPeriodo} />
           <Route exact path="/reporte/servicio/relacion-medicos-residentes-otras-especialidades-por-periodo/vr2" component={MedicoResidenteGrupo2} />
 

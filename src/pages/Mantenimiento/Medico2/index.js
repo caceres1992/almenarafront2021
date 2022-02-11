@@ -694,7 +694,7 @@ export const Medico2 = () => {
           loading={dataSource ? false : true}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
-          pagination={{ pageSize: 10 }}
+          pagination={{ pageSize: 20 }}
           scroll={{ x: 2000 }}
         />
         <Drawer

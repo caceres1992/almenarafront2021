@@ -153,7 +153,13 @@ class ImportFromExcel extends Component {
   }
 
   converToDoctor(row) {
+
+    const NuevoObjetoLista = this.props.campus;
+    const filtrarPornombre = NuevoObjetoLista.filter(f => f.name === row[8])[0]
+    console.log(NuevoObjetoLista)
+    console.log(filtrarPornombre)
     return {
+
       id: null,
       document: row[1] == "" || row[1] == null ? "" : row[1].toString(),
       name: row[4] == "" || row[4] == null ? "" : row[4],
@@ -163,8 +169,9 @@ class ImportFromExcel extends Component {
         id: row[7].trim().toLowerCase() == "libre" ? 1 : 2,
       },
       campus: {
-        id: row[8],
+        id:filtrarPornombre?.id
       },
+
       birthDate:
         row[9] == "" || row[9] == null ? null : this.excelDateToJSDate(row[9]),
       //"birthDate" : null,
@@ -189,7 +196,9 @@ class ImportFromExcel extends Component {
         row[14] == "" || row[14] == null
           ? null
           : this.excelDateToJSDate(row[14]),
+
     };
+
   }
 
   excelDateToJSDate(serial) {
@@ -222,23 +231,30 @@ class ImportFromExcel extends Component {
     let lstDoctors = this.state.rows;
     lstDoctors = lstDoctors.filter((doctor, key) => key > 0);
     let transformedArr = lstDoctors.map(this.converToDoctor);
-    console.log(transformedArr);
-    this.props
-      .onImportdata(transformedArr)
-      .then((resp) => {
-        console.log(resp);
-        this.cleanState();
-        this.props.onListDoctors();
-        this.props.onOpenNotification(
-          "Datos importados correctamente",
-          "",
-          "topRight"
-        );
-        this.props.onVisibleModal();
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+
+    console.log(transformedArr.filter(d=>d.campus?.id != null || d.campus?.id != undefined))
+
+    this.props.campus.forEach(camp => {
+      console.log(camp.name)
+    });
+
+    // console.log(transformedArr);
+    // this.props
+    //   .onImportdata(transformedArr)
+    //   .then((resp) => {
+    //     console.log(resp);
+    //     this.cleanState();
+    //     this.props.onListDoctors();
+    //     this.props.onOpenNotification(
+    //       "Datos importados correctamente",
+    //       "",
+    //       "topRight"
+    //     );
+    //     this.props.onVisibleModal();
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err);
+    //   });
   };
 
   render() {

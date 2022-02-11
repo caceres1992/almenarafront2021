@@ -95,21 +95,22 @@ export const Medico = () => {
     getDoctors().then((resp) => {
       resp.forEach((data) => {
         data.key = data.id;
+        data.name = data.name.toUpperCase()
         data.schoolName =
           data.schoolAgreement == null
             ? "Sin definir"
-            : data.schoolAgreement.school.shortName;
+            : data.schoolAgreement.school.shortName.toUpperCase();
         data.specialtyName =
-          data.specialty == null ? "Sin definir" : data.specialty.name;
-        data.plazaName = data.plaza == null ? "Sin definir" : data.plaza.name;
+          data.specialty == null ? "Sin definir" : data.specialty.name.toUpperCase();
+        data.plazaName = data.plaza == null ? "Sin definir" : data.plaza.name.toUpperCase();
         data.campusName =
-          data.campus == null ? "Sin definir" : data.campus.name;
+          data.campus == null ? "Sin definir" : data.campus.name.toUpperCase();
         data.lastName =
           data.paternalSurname == null
             ? "Sin definir"
-            : data.paternalSurname + " " + data.maternalSurname;
+            : data.paternalSurname.toUpperCase() + " " + data.maternalSurname.toUpperCase();
         // data.teamName = "Grupo " + data.team.name;
-        data.nivelName = data.nivel == null ? "Sin definir" : data.nivel.name;
+        data.nivelName = data.nivel == null ? "Sin definir" : data.nivel.name.toUpperCase();
         data.phone =
           data.phone == null || data.phone.trim() == ""
             ? "Sin definir"
@@ -117,7 +118,7 @@ export const Medico = () => {
         data.email =
           data.email == null || data.email.trim() == ""
             ? "Sin definir"
-            : data.email;
+            : data.email.toUpperCase();
         data.birthDate =
           data.birthDate == null || data.birthDate.trim() == ""
             ? "Sin definir"
@@ -125,13 +126,16 @@ export const Medico = () => {
         data.address =
           data.address == null || data.address.trim() == ""
             ? "Sin definir"
-            : data.address;
+            : data.address.toUpperCase();
       });
       setDataSource(resp);
       console.log(resp);
     });
   };
 
+  // const listarSede =()=>{
+    
+  // }
   const validationSchema = Yup.object().shape({
     document: Yup.string()
       .trim()
@@ -173,12 +177,12 @@ export const Medico = () => {
       // ),
       .min(5, "El campo debe tener al menos 5 caracteres.")
       .required("Dirección es un campo requerido"),
-    cmp: Yup.string()
-      .trim()
-      .matches(/^[0-9]*$/, "Solo se admiten números.")
-      .min(5, "Solo se admite min. 5 dígitos.")
-      .max(6, "Solo se admite máx. 6 dígitos.")
-      .required("CMP requerido"),
+    // cmp: Yup.string()
+    //   .trim()
+    //   .matches(/^[0-9]*$/, "Solo se admiten números.")
+    //   .min(5, "Solo se admite min. 5 dígitos.")
+    //   .max(6, "Solo se admite máx. 6 dígitos.")
+    //   .required("CMP requerido"),
     email: Yup.string()
       .trim()
       .email("Formato no válido. (ej. correo@example.com)")
@@ -192,9 +196,9 @@ export const Medico = () => {
     initialValues: {
       action: "new",
       document: "",
-      paternalSurname: "",
-      maternalSurname: "",
-      name: "",
+      paternalSurname: "".toUpperCase(),
+      maternalSurname: "".toUpperCase(),
+      name: "".toUpperCase(),
       schoolAgreement: {
         id: null,
       },
@@ -215,9 +219,9 @@ export const Medico = () => {
       },
       birthDate: null,
       registeredAt: null,
-      address: "",
-      cmp: "",
-      email: "",
+      address: "".toUpperCase(),
+      cmp: "".toUpperCase(),
+      email: "".toUpperCase(),
       phone: "",
       status: true,
     },
@@ -343,53 +347,59 @@ export const Medico = () => {
     //   align: "center",
     // },
     {
-      title: "Nivel",
+      title: "Nivel".toUpperCase(),
       dataIndex: "nivelName",
       key: "nivelName",
       width: 70,
       align: "center",
     },
     {
-      title: "Sede",
+      title: "Sede".toUpperCase(),
       dataIndex: "campusName",
       key: "campusName",
       width: 78,
       align: "center",
     },
     {
-      title: "Fecha de Nacimiento",
+      title: "Fecha de Nacimiento".toUpperCase(),
       dataIndex: "birthDate",
       key: "birthDate",
       align: "center",
     },
     {
-      title: "Domicilio",
+      title: "Domicilio".toUpperCase(),
       dataIndex: "address",
       key: "address",
       align: "center",
     },
     {
-      title: "CMP",
+      title: "CMP".toUpperCase(),
       dataIndex: "cmp",
       key: "cmp",
       width: 70,
       align: "center",
+      render: (val, record) =>
+      record.cmp === '' ? (
+        <Tag color="yellow">NO TIENE</Tag>
+      ) : (
+        <Tag color="blue">{record.cmp}</Tag>
+      ),
     },
     {
-      title: "Correo",
+      title: "Correo".toUpperCase(),
       dataIndex: "email",
       key: "email",
       align: "center",
     },
     {
-      title: "N° Celular",
+      title: "N° Celular".toUpperCase(),
       dataIndex: "phone",
       key: "phone",
       width: 100,
       align: "center",
     },
     {
-      title: "Estado",
+      title: "Estado".toUpperCase(),
       dataIndex: "status",
       key: "status",
       width: 90,
@@ -696,6 +706,7 @@ export const Medico = () => {
         <ImportFromExcel
           onImportdata={saveImportedDoctor}
           onListDoctors={listar}
+          campus={campus}
           onVisibleModal={handleCancelModalImport}
           onOpenNotification={openNotification}
         />
@@ -710,7 +721,7 @@ export const Medico = () => {
           loading={!dataSource.length > 0}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
-          pagination={{ pageSize: 10 }}
+          pagination={{ pageSize: 20 }}
           scroll={{ x: 2000 }}
         />
         <Drawer
@@ -994,7 +1005,7 @@ export const Medico = () => {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="CMP:" required>
+                <Form.Item label="CMP:">
                   <Input
                     name="cmp"
                     value={formik.values.cmp}

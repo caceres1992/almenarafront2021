@@ -38,6 +38,8 @@ const openErrorNotification = (msg, description, placement) => {
   });
 };
 
+
+
 export const Usuario = () => {
   const [loading, setLoading] = useState(false);
   const [visibleNewForm, setVisibleNewForm] = useState(false);
@@ -321,7 +323,7 @@ export const Usuario = () => {
           loading={!dataSource.length>0}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
-          pagination={{ pageSize: 5 }}
+          pagination={{ pageSize: 10 }}
           scroll={{ x: 800 }}
         />
         <Drawer

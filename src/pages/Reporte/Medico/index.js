@@ -187,7 +187,7 @@ export const MedicoReporte = () => {
           loading={!dataSource.length>0}
           dataSource={dataSource}
           columns={columns}
-          pagination={{ pageSize: 10 }}
+          pagination={{ pageSize: 20 }}
           scroll={{ x: 2000 }}
         />
       </div>
