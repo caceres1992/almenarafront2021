@@ -376,11 +376,11 @@ export const Medico = () => {
       title: "CMP".toUpperCase(),
       dataIndex: "cmp",
       key: "cmp",
-      width: 70,
+      width: 100,
       align: "center",
       render: (val, record) =>
       record.cmp === '' ? (
-        <Tag color="yellow">NO TIENE</Tag>
+        <Tag color="orange">NO TIENE</Tag>
       ) : (
         <Tag color="blue">{record.cmp}</Tag>
       ),

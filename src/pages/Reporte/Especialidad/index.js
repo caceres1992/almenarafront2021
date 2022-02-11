@@ -43,6 +43,7 @@ const TablaEspecialidades = () => {
         loading={!dataSource.length > 0}
         dataSource={dataSource}
         columns={colums}
+        rowClassName="textUppercase"
         pagination={{ pageSize: dataSource.length }}
       />
     </div>
@@ -82,8 +83,8 @@ export const EspecialidadReporte = () => {
           </Breadcrumb>
         </h2>
 
-        <Button type="ghost" onClick={handlePrint}>
-          <PrinterOutlined /> Imprimir
+        <Button type="dashed" danger  onClick={handlePrint}>
+            <FilePdfTwoTone twoToneColor="red" />  Exportar a PDF
         </Button>
       </header>
 

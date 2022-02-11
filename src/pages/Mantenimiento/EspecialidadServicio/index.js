@@ -293,6 +293,7 @@ export const EspecialidadServicio = () => {
           loading={!dataSource.length > 0}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
+          rowClassName="textUppercase"
           pagination={{ pageSize: 20 }}
           scroll={{ x: 800 }}
         />
@@ -377,6 +378,7 @@ export const EspecialidadServicio = () => {
                     : filterServiceTable
                 }
                 columns={servicesColumns}
+                rowClassName="textUppercase"
                 pagination={{ pageSize: 5 }}
                 scroll={{ x: 800 }}
               />

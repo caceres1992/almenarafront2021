@@ -1,3 +1,4 @@
+import { FilePdfTwoTone } from '@ant-design/icons';
 import { Breadcrumb, Button, Table, Tag } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { getSchools, viewPdfScholl } from '../../../services/SchoolService';
@@ -28,6 +29,8 @@ const UniversidadReporte = () => {
             dataIndex: "name",
             key: "name",
             align: "center",
+            
+            
         },
         {
             title: "NOMBRE CORTO DE UNIVERSIDAD",
@@ -58,9 +61,9 @@ const UniversidadReporte = () => {
                     <Breadcrumb.Item>Universidad</Breadcrumb.Item>
                 </Breadcrumb>
             </h2>
-            <Button type="primary" size="large" onClick={() =>exportToPdf()
+            <Button  type="dashed" danger size="large" onClick={() =>exportToPdf()
             }>
-                Exportar PDF
+            <FilePdfTwoTone twoToneColor="red" /> Exportar a PDF
             </Button>
         </header>
 
@@ -72,6 +75,7 @@ const UniversidadReporte = () => {
           columns={columns}
           pagination={{ pageSize: 20 }}
           scroll={{ x: 800 }}
+          rowClassName="textUppercase"
         />
         </div>
     </>;

@@ -173,12 +173,12 @@ export const Medico2 = () => {
       // ),
       .min(5, "El campo debe tener al menos 5 caracteres.")
       .required("Dirección es un campo requerido"),
-    cmp: Yup.string()
-      .trim()
-      .matches(/^[0-9]*$/, "Solo se admiten números.")
-      .min(5, "Solo se admite min. 5 dígitos.")
-      .max(6, "Solo se admite máx. 6 dígitos.")
-      .required("CMP requerido"),
+    // cmp: Yup.string()
+    //   .trim()
+    //   .matches(/^[0-9]*$/, "Solo se admiten números.")
+    //   .min(5, "Solo se admite min. 5 dígitos.")
+    //   .max(6, "Solo se admite máx. 6 dígitos.")
+    //   .required("CMP requerido"),
     email: Yup.string()
       .trim()
       .email("Formato no válido. (ej. correo@example.com)")
@@ -372,8 +372,14 @@ export const Medico2 = () => {
       title: "CMP",
       dataIndex: "cmp",
       key: "cmp",
-      width: 70,
+      width: 100,
       align: "center",
+      render: (val, record) =>
+      record.cmp === '' ? (
+        <Tag color="orange">NO TIENE</Tag>
+      ) : (
+        <Tag color="blue">{record.cmp}</Tag>
+      ),
     },
     {
       title: "Correo",
@@ -694,6 +700,7 @@ export const Medico2 = () => {
           loading={dataSource ? false : true}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
+          rowClassName="textUppercase"
           pagination={{ pageSize: 20 }}
           scroll={{ x: 2000 }}
         />
@@ -948,7 +955,7 @@ export const Medico2 = () => {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="CMP:" required>
+                <Form.Item label="CMP:" >
                   <Input
                     name="cmp"
                     value={formik.values.cmp}

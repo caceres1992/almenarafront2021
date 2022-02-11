@@ -214,6 +214,7 @@ export const Universidad = () => {
           loading={!dataSource.length>0}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
+          rowClassName="textUppercase"
           pagination={{ pageSize: 20 }}
           scroll={{ x: 800 }}
         />

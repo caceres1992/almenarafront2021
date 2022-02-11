@@ -323,6 +323,7 @@ export const Usuario = () => {
           loading={!dataSource.length>0}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
+          rowClassName="textUppercase"
           pagination={{ pageSize: 10 }}
           scroll={{ x: 800 }}
         />
