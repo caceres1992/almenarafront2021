@@ -104,10 +104,6 @@ class ImportFromExcel extends Component {
     });
   }
 
-
-
-  
-
   renderFile = (fileObj) => {
     //just pass the fileObj as parameter
     ExcelRenderer(fileObj, (err, resp) => {
@@ -150,8 +146,6 @@ class ImportFromExcel extends Component {
     this.setState({
       isOpen: !this.state.isOpen,
     });
-
-  
   }
 
   openFileBrowser = () => {
@@ -166,7 +160,7 @@ class ImportFromExcel extends Component {
       paternalSurname: row[2] == "" || row[2] == null ? "" : row[2],
       maternalSurname: row[3] == "" || row[3] == null ? "" : row[3],
       plaza: {
-        id: row[7].trim().toLowerCase() == "libre" ? 1 : 2,
+        id: row[7]?.trim().toLowerCase() == "libre" ? 1 : 2,
       },
       campus: {
         id: row[8],
@@ -248,6 +242,13 @@ class ImportFromExcel extends Component {
   };
 
   render() {
+    const prueba = () => {
+      this.saveImportedData();
+          this.props.onVisibleModal();
+          this.props.onListDoctors();
+          this.props.setconsultarApi(true);
+    };
+
     return (
       <div>
         <Row>
@@ -270,7 +271,8 @@ class ImportFromExcel extends Component {
                 </Button>
                 {this.state.dataLoaded && (
                   <Button
-                    onClick={this.saveImportedData.bind(this)}
+                    // onClick={this.saveImportedData.bind(this)}
+                    onClick={() => prueba()}
                     type="primary"
                     size="large"
                     style={{ marginLeft: "20px" }}

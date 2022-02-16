@@ -55,10 +55,10 @@ export const TableMes = ({ dataTabla, listaGrupos}) => {
         </h3>
       </Divider> 
        <div className="table-responsive">
-        <table className="table table-hover" style={{ textAlign: "center" }}>
+        <table className="table table-hover " style={{ textAlign: "center" }}>
           <thead>
             <tr key={llave}>
-              <th key={llave + mesName } rowSpan="2">{mesName}</th>
+              <th  key={llave + mesName } rowSpan="2">{mesName}</th>
               {turnosDiurno.map((data) => (
                 data.diaNombre === "D" || data === "S" ?
                 <th key={llave + data.idReg + ''} style={{color: "red"}}>{String(data.diaNombre)}</th> :

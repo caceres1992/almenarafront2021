@@ -552,7 +552,7 @@ export const Medico = () => {
   };
 
   const handleCancelModalImport = () => {
-    setIsModalImportDataVisible(false);
+    setIsModalImportDataVisible(!isImportDataModalVisible);
   };
 
   useEffect(() => {
@@ -707,6 +707,7 @@ export const Medico = () => {
           onImportdata={saveImportedDoctor}
           onListDoctors={listar}
           campus={campus}
+          setconsultarApi={setconsultarApi}
           onVisibleModal={handleCancelModalImport}
           onOpenNotification={openNotification}
         />
@@ -715,7 +716,7 @@ export const Medico = () => {
         <Input.Search
           className="searchInput"
           placeholder="Buscar por nombre..."
-          onKeyUpCapture={(e) => keyUpTable(e.target.value)}
+          onKeyUpCapture={(e) => keyUp=(e.target.value)}
         />
         <Table
           loading={!dataSource.length > 0}

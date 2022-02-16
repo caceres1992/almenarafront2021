@@ -54,6 +54,10 @@ body {
 .textUppercase{
   text-transform: uppercase;
 }
+
+.ant-pagination-options{
+  display: none;
+}
 .table {
   --bs-table-bg: transparent;
   --bs-table-striped-color: #212529;

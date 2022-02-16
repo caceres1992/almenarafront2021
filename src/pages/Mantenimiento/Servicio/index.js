@@ -209,7 +209,6 @@ export const Servicio = () => {
           columns={columns}
           pagination={{ pageSize: 20 }}
           scroll={{ x: 800 }}
-
         />
         <Drawer
           title={

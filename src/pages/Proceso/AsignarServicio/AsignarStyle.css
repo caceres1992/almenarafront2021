@@ -1,6 +1,7 @@
 .stickyResidente {
   position: sticky;
   left: 0;
+  text-transform: uppercase;
   background-color: rgb(233, 233, 233) !important;
   z-index: 10 !important;
 }
@@ -36,6 +37,7 @@
 
 .stickyEspecialidad {
   position: sticky;
+  text-transform: uppercase;
   left: 131px;
   background-color: rgb(233, 233, 233) !important;
   z-index: 10 !important;

@@ -153,23 +153,21 @@ class ImportFromExcel extends Component {
   }
 
   converToDoctor(row) {
+    // const NuevoObjetoLista = this.props.campus;
+    // const filtrarPornombre = NuevoObjetoLista.filter(f => f.name === row[8])[0]
+    // console.log(NuevoObjetoLista)
 
-    const NuevoObjetoLista = this.props.campus;
-    const filtrarPornombre = NuevoObjetoLista.filter(f => f.name === row[8])[0]
-    console.log(NuevoObjetoLista)
-    console.log(filtrarPornombre)
     return {
-
       id: null,
       document: row[1] == "" || row[1] == null ? "" : row[1].toString(),
       name: row[4] == "" || row[4] == null ? "" : row[4],
       paternalSurname: row[2] == "" || row[2] == null ? "" : row[2],
       maternalSurname: row[3] == "" || row[3] == null ? "" : row[3],
       plaza: {
-        id: row[7].trim().toLowerCase() == "libre" ? 1 : 2,
+        id: row[7]?.trim().toLowerCase() == "libre" ? 1 : 2,
       },
       campus: {
-        id:filtrarPornombre?.id
+        id: row[8] == "" || row[8] == null ? null : row[8],
       },
 
       birthDate:
@@ -196,9 +194,7 @@ class ImportFromExcel extends Component {
         row[14] == "" || row[14] == null
           ? null
           : this.excelDateToJSDate(row[14]),
-
     };
-
   }
 
   excelDateToJSDate(serial) {
@@ -232,32 +228,45 @@ class ImportFromExcel extends Component {
     lstDoctors = lstDoctors.filter((doctor, key) => key > 0);
     let transformedArr = lstDoctors.map(this.converToDoctor);
 
-    console.log(transformedArr.filter(d=>d.campus?.id != null || d.campus?.id != undefined))
+    console.log(
+      transformedArr.filter(
+        (d) => d.campus?.id != null || d.campus?.id != undefined
+      )
+    );
 
-    this.props.campus.forEach(camp => {
-      console.log(camp.name)
+    this.props.campus.forEach((camp) => {
+      console.log(camp.name);
     });
 
-    // console.log(transformedArr);
-    // this.props
-    //   .onImportdata(transformedArr)
-    //   .then((resp) => {
-    //     console.log(resp);
-    //     this.cleanState();
-    //     this.props.onListDoctors();
-    //     this.props.onOpenNotification(
-    //       "Datos importados correctamente",
-    //       "",
-    //       "topRight"
-    //     );
-    //     this.props.onVisibleModal();
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err);
-    //   });
+    console.log(this.props);
+
+    this.props
+      .onImportdata(transformedArr)
+      .then((resp) => {
+        console.log(resp);
+        this.cleanState();
+        this.props.onListDoctors();
+        this.props.onOpenNotification(
+          "Datos importados correctamente",
+          "",
+          "topRight"
+        );
+        this.props.onVisibleModal();
+      })
+
+      .catch(function (err) {
+        console.log(err);
+      });
   };
 
   render() {
+    const prueba = () => {
+      this.saveImportedData();
+          this.props.onVisibleModal();
+          this.props.onListDoctors();
+          this.props.setconsultarApi(true);
+
+    };
     return (
       <div>
         <Row>
@@ -279,14 +288,19 @@ class ImportFromExcel extends Component {
                   <i></i> Buscar...
                 </Button>
                 {this.state.dataLoaded && (
-                  <Button
-                    onClick={this.saveImportedData.bind(this)}
-                    type="primary"
-                    size="large"
-                    style={{ marginLeft: "20px" }}
-                  >
-                    <i></i>Guardar datos
-                  </Button>
+                  <>
+                    <Button
+                      // onClick={this.saveImportedData.bind(this)}
+                      onClick={() => prueba()}
+                      type="primary"
+                      size="large"
+                      // onSubmit={this.prueba.bind(this)}
+                      style={{ marginLeft: "20px" }}
+                    >
+                      <i></i>Guardar datos
+                    </Button>
+                    {/* <Button onClick={() => prueba()}>prueba</Button> */}
+                  </>
                 )}
                 <input
                   type="file"

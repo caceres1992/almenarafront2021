@@ -686,6 +686,7 @@ export const Medico2 = () => {
         <ImportFromExcel
           onImportdata={saveImportedDoctor2}
           onListDoctors={listar}
+          setconsultarApi={setconsultarApi}
           onVisibleModal={handleCancelModalImport}
           onOpenNotification={openNotification}
         />

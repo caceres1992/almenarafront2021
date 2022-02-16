@@ -74,7 +74,7 @@ const openErrorNotification = (msg, description, placement) => {
   }, [isBgGray]);
 
   return (
-    <td style={styleTd}>
+    <td style={styleTd} className="textUppercase">
       <select
         name="teamId"
         style={{ width: "40px" }}

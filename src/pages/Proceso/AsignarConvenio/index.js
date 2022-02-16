@@ -133,6 +133,7 @@ export const AsignarConvenio = () => {
           onKeyUpCapture={(e) => keyUpTable(e.target.value)}
         />
         <Table
+        className="textUppercase"
           loading={loading}
           dataSource={filterTable === null ? dataSource : filterTable}
           columns={columns}
